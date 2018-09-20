@@ -1,8 +1,9 @@
 from django.contrib import admin
-from django.contrib import admin
-from django.conf.urls import url
 from front import views
+from django.urls import path, include
+
 
 urlpatterns = [
-    url(r'^$', views.index),
+    path('/', views.index, name='index'),
+    path('estatuto/', views.estatuto, name='front_estatuto'),
 ]
