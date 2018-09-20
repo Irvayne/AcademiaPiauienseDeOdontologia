@@ -1,0 +1,26 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <title>CKEditor</title>
+    <meta charset="utf-8" />
+    
+</head>
+<body>
+    
+    <div id="dvCentro">
+        <form accept="{% url 'estatuto_editar' %}" method="post">
+            {% csrf_token %}
+            <textarea id="id_estatuto_conteudo" name="estatuto_conteudo" >{{ estatuto.conteudo}}</textarea>
+            <button type="submit" class="btn btn-primary"> <span class="glyphicon glyphicon-plus "></span> Salvar</button>
+        </form>
+    </div>
+    <script src="{% static "ckeditor/ckeditor.js" %}"></script>
+    <script>
+        CKEDITOR.replace( 'id_estatuto_conteudo' );
+    </script>
+
+
+    <a href="{% url 'estatuto'  %}" class="btn btn-success"><span class="glyphicon glyphicon-search"></span> Cancelar</a>
+</body>
+</html>
