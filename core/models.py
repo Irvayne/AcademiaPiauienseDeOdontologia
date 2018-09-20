@@ -1,3 +1,5 @@
 from django.db import models
 
-# Create your models here.
+class Estatuto(models.Model):
+
+	conteudo = models.CharField(max_length=1000)
