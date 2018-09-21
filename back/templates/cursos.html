@@ -1,0 +1,38 @@
+{% extends "decorator.html" %}
+{% block body %}
+
+<div class="panel-body">
+	<a type="button" href="{% url 'cursos_form' %}" class="btn btn-primary pull-right">Cadastrar</a>
+
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Cursos Cadastradas</h3>
+	</div>
+	<div class="panel-body">
+		<table class="table"> <thead>
+			<tr>
+				<th scope="col">Nome</th>
+				<th scope="col">Descrição</th>
+				<th scope="col">Conteúdo</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for curso in cursos %}
+			<tr>
+				<td>{{ curso.nome}}</td>
+				<td>{{ curso.descricao}}</td>
+				<td>{{ curso.conteudo}}</td>
+				<td><a class="btn btn-success"><span class="glyphicon glyphicon-search"></span> Editar</a>
+				</td>
+
+			</tr>
+
+			{% endfor %}
+
+		</tbody></table>
+	</div>
+</div>
+
+{% endblock %}

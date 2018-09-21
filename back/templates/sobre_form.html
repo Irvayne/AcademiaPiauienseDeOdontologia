@@ -1,0 +1,21 @@
+
+{% extends 'decorator.html' %}
+{% load staticfiles %}
+
+{% block body %}
+<div id="dvCentro">
+    <form accept="{% url 'sobre_form' %}" method="post">
+        {% csrf_token %}
+        <textarea id="id_sobre_conteudo" name="conteudo" >{{ sobre.conteudo}}</textarea>
+        <button type="submit" class="btn btn-primary"> <span class="glyphicon glyphicon-plus "></span> Salvar</button>
+    </form>
+</div>
+<script src="{% static "ckeditor/ckeditor.js" %}"></script>
+<script>
+    CKEDITOR.replace( 'id_sobre_conteudo' );
+</script>
+
+
+<a href="{% url 'sobre'  %}" class="btn btn-success"><span class="glyphicon glyphicon-search"></span> Cancelar</a>
+
+{% endblock %}

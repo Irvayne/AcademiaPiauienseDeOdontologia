@@ -3,7 +3,7 @@
 
 {% extends "decorator.html" %}
 {% block body %}
-{{estatuto.conteudo}}
-<a href="{% url 'estatuto_form' %}" class="btn btn-success"><span class="glyphicon glyphicon-search"></span> Editar</a>
 
+<a href="{% url 'estatuto_form' %}" class="btn btn-success"><span class="glyphicon glyphicon-search"></span> Editar</a>
+{{estatuto.conteudo}}
 {% endblock %}
