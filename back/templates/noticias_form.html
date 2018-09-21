@@ -1,0 +1,28 @@
+{% extends 'decorator.html' %}
+{% load staticfiles %}
+{% block body %}
+
+<form accept="{% url 'noticias_form' %}" method="POST">
+	{% csrf_token %}
+	<div class="form-group">
+		<label for="id_titulo">Título</label>
+		<input type="text" name="titulo" class="form-control" id="id_titulo" placeholder="Título da notícia">
+	</div>
+	<div class="form-group">
+		<label for="id_subtitulo">Subtítulo</label>
+		<input type="text" name="subtitulo" class="form-control" id="id_subtitulo" placeholder="Subtítulo da notícia">
+	</div>
+	<div class="form-group">
+		<label for="id_conteudo">Conteúdo</label>
+		<textarea id="id_conteudo" name="conteudo" ></textarea>
+	</div>
+	<button class="btn btn-primary">Salvar</button>
+</form>
+
+<script src="{% static "ckeditor/ckeditor.js" %}"></script>
+<script>
+	CKEDITOR.replace( 'id_conteudo' );
+</script>
+
+
+{% endblock %}
