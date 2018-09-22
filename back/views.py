@@ -105,6 +105,7 @@ def sobre(request):
 def sobre_form(request):
 	sobre = Sobre.objects.get(id=1)
 	if request.method == 'POST':
+		sobre.titulo = request.POST['titulo']
 		sobre.conteudo = request.POST['conteudo']
 		sobre.save()
 		return redirect('sobre')

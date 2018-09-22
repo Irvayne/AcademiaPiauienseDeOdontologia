@@ -5,5 +5,15 @@
 {% block body %}
 
 <a href="{% url 'estatuto_form' %}" class="btn btn-success"><span class="glyphicon glyphicon-search"></span> Editar</a>
-{{estatuto.conteudo}}
+
+
+<div id="id_conteudo"></div>
+
+<input type="hidden" id="var" name="variable" value="{{ estatuto.conteudo }}">
+
+<script type="text/javascript"> 
+	var myVar = document.getElementById("var").value;
+    document.getElementById("id_conteudo").innerHTML = myVar;
+</script>
+
 {% endblock %}
