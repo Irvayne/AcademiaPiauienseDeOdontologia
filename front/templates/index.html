@@ -125,9 +125,16 @@
               <a href="#">
                 <h4 class="sec-head">Academia Piauiense de Odontologia</h4>
               </a>
-              <p>
-                {{sobre.conteudo}}
-              </p>
+              <div id="div_conteudo_sobre">
+                
+              </div>
+
+              <input type="hidden" id="conteudo_sobre" name="variable" value="{{ sobre.conteudo }}">
+
+              <script type="text/javascript"> 
+                var conteudoSobre = document.getElementById("conteudo_sobre").value;
+                document.getElementById("div_conteudo_sobre").innerHTML = conteudoSobre;
+              </script>
             </div>
           </div>
         </div>
@@ -156,7 +163,10 @@
             <div class="single-blog">
               <div class="blog-meta">
                 <span class="date-type">
-                  <i class="fa fa-calendar"></i>2016-03-05 / 09:10:16
+                  <i class="fa fa-calendar"></i> <b>Criado:</b> {{curso.criado}}
+                </span>
+                <span class="date-type">
+                  <i class="fa fa-calendar"></i> <b>Alterado:</b> {{curso.modificado}}
                 </span>
               </div>
               <div class="blog-text">
@@ -217,11 +227,13 @@
               </div>
               <div class="blog-text">
                 <h4>
-                  <a href="blog.html">{{noticia.titulo}}</a>
+                  <a>{{noticia.titulo}}</a>
 								</h4>
-                <p>
-                  {{noticia.conteudo}}
-                </p>
+                <div id="div_conteudo_noticia{{noticia.id}}">
+                </div>
+
+                <input type="hidden" id="conteudo_noticia{{noticia.id}}" name="variable" value="{{ noticia.conteudo }}">
+                <input type="hidden" class="id_noticia" value="{{noticia.id}}">
               </div>
               <span>
 								<a href="blog.html" class="ready-btn">Ler Mais</a>
@@ -367,6 +379,17 @@
   <script src="{% static "contactform/contactform.js" %}"></script>
 
   <script src="{% static "js/main.js" %}"></script>
+
+  <!--Js para formatar conteudo de notícias -->
+  <script type="text/javascript"> 
+    var idsNoticias = document.getElementsByClassName("id_noticia");
+    for(var id = 0; id < idsNoticias.length; id++) {
+      string_conteudo_noticia = 'conteudo_noticia' + idsNoticias[id].value;
+      string_div_conteudo_noticia = 'div_conteudo_noticia' + idsNoticias[id].value;
+      var conteudoNoticias = document.getElementById(string_conteudo_noticia).value;
+      document.getElementById(string_div_conteudo_noticia).innerHTML = conteudoNoticias;
+    } 
+  </script>
 </body>
 
 </html>
