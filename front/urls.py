@@ -6,5 +6,5 @@ from django.urls import path, include
 urlpatterns = [
     path('', views.index, name='index'),
     path('estatuto/', views.estatuto, name='front_estatuto'),
-    path('diretoria/', views.diretorias, name='front_diretoria'),
+    path('diretoria/lista/', views.diretorias, name='front_diretoria'),
 ]

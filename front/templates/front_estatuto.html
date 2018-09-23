@@ -3,46 +3,26 @@
 <html lang="pt-br">
 <head>
   <meta charset="utf-8">
-  <title>Academia Piauiense de Odontologia</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
 
-  <!-- Favicons -->
+  <title>Academia Piauiense de Odontologia</title>
+
   <link href="{% static "img/favicon.png" %}" rel="icon">
   <link href="{% static "img/apple-touch-icon.png" %}" rel="apple-touch-icon">
-
-  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900" rel="stylesheet">
-
-  <!-- Bootstrap CSS File -->
   <link href="{% static "lib/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
-
-  <!-- Libraries CSS Files -->
   <link href="{% static "lib/nivo-slider/css/nivo-slider.css" %}" rel="stylesheet">
   <link href="{% static "lib/owlcarousel/owl.carousel.css" %}" rel="stylesheet">
   <link href="{% static "lib/owlcarousel/owl.transitions.css" %}" rel="stylesheet">
   <link href="{% static "lib/font-awesome/css/font-awesome.min.css" %}" rel="stylesheet">
   <link href="{% static "lib/animate/animate.min.css" %}" rel="stylesheet">
   <link href="{% static "lib/venobox/venobox.css" %}" rel="stylesheet">
-
-  <!-- Nivo Slider Theme -->
   <link href="{% static "css/nivo-slider-theme.css" %}" rel="stylesheet">
-
-  <!-- Main Stylesheet File -->
   <link href="{% static "css/style.css" %}" rel="stylesheet">
-
-  <!-- Responsive Stylesheet File -->
   <link href="{% static "css/responsive.css" %}" rel="stylesheet">
-
   <link href="{% static "css/estatuto.css" %}" rel="stylesheet">
-
-  <!-- =======================================================
-    Theme Name: eBusiness
-    Theme URL: https://bootstrapmade.com/ebusiness-bootstrap-corporate-template/
-    Author: BootstrapMade.com
-    License: https://bootstrapmade.com/license/
-  ======================================================= -->
 </head>
 
 <body data-spy="scroll" data-target="#navbar-example">
@@ -72,28 +52,28 @@
               <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1" id="navbar-example">
                 <ul class="nav navbar-nav navbar-right">
                   <li class="active">
-                    <a class="page-scroll" href="#home">Home</a>
+                    <a class="page-scroll" href="{% url 'index' %}#home">Home</a>
                   </li>
                   <li>
-                    <a class="page-scroll" href="#sobre">Sobre</a>
+                    <a class="page-scroll" href="{% url 'index' %}#sobre">Sobre</a>
                   </li>
                   <li>
-                    <a class="page-scroll" href="#cursos">Cursos</a>
+                    <a class="page-scroll" href="{% url 'index' %}#cursos">Cursos</a>
                   </li>
                   <li>
-                    <a class="page-scroll" href="#diretoria">Diretoria</a>
+                    <a class="page-scroll" href="{% url 'index' %}#noticias">Notícias</a>
                   </li>
                   <li>
-                    <a class="page-scroll" href="#noticias">Notícias</a>
+                    <a class="page-scroll" href="{% url 'index' %}#contatos">Contatos</a>
                   </li>
                   <li>
-                    <a class="page-scroll" href="#contact">Contatos</a>
+                    <a href="{% url 'front_diretoria' %}">Diretoria</a>
                   </li>
                   <li>
                     <a class="page-scroll" href="#cadeiras">Cadeiras</a>
                   </li>
                   <li>
-                    <a class="page-scroll" href="#estatuto">Regimento</a>
+                    <a href="#estatuto">Regimento</a>
                   </li>
                 </ul>
               </div>

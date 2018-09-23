@@ -41,6 +41,7 @@ class Sobre(models.Model):
 	titulo = models.CharField(max_length=1000)
 	conteudo = models.CharField(max_length=1000)
 
+
 class Contato(models.Model):
 	telefone = models.CharField(max_length=50)
 	email = models.CharField(max_length=50)

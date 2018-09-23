@@ -35,7 +35,7 @@
   <!-- Responsive Stylesheet File -->
   <link href="{% static "css/responsive.css" %}" rel="stylesheet">
 
-  <link href="{% static "css/estatuto.css" %}" rel="stylesheet">
+  <link href="{% static "css/diretoria.css" %}" rel="stylesheet">
 
   <!-- =======================================================
     Theme Name: eBusiness
@@ -81,19 +81,19 @@
                     <a class="page-scroll" href="#cursos">Cursos</a>
                   </li>
                   <li>
-                    <a class="page-scroll" href="#diretoria">Diretoria</a>
-                  </li>
-                  <li>
                     <a class="page-scroll" href="#noticias">Notícias</a>
                   </li>
                   <li>
                     <a class="page-scroll" href="#contact">Contatos</a>
                   </li>
                   <li>
+                    <a href="#diretoria">Diretoria</a>
+                  </li>
+                  <li>
                     <a class="page-scroll" href="#cadeiras">Cadeiras</a>
                   </li>
                   <li>
-                    <a class="page-scroll" href="#estatuto">Regimento</a>
+                    <a href="{% url 'front_estatuto' %}">Regimento</a>
                   </li>
                 </ul>
               </div>
@@ -109,14 +109,14 @@
   <!-- header end -->
 
   <!-- Start About area -->
-  <div id="estatuto" class="about-area area-padding">
+  <div id="diretoria" class="about-area area-padding">
     <div class="container">
       <div class="row">
         <div class="col-md-12 col-sm-12 col-xs-12">
           <div class="section-headline text-center">
             <div class="diretoria">
               <div id="div_conteudo_diretoria"></div>
-              <input type="hidden" id="conteudo_diretoria" name="variable" value="{{ diretoria.descricao }}">
+              <input type="hidden" id="conteudo_diretoria" name="variable" value="{{ diretorias.descricao }}">
               <script type="text/javascript"> 
                 var conteudoDiretoria = document.getElementById("conteudo_diretoria").value;
                 document.getElementById("div_conteudo_diretoria").innerHTML = conteudoDiretoria;
