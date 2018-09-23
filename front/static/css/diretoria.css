@@ -1,0 +1,25 @@
+.diretoria {
+	margin-top: 8%;
+	margin-bottom: 20%;
+}
+
+.diretoria h1 {
+	font-size: 24px;
+	font-style: bold;
+	line-height: 5%;
+	text-align: center;
+}
+
+.diretoria h2 {
+	font-size: 18px;
+	font-style: bold;
+	line-height: 0%;
+	margin-top: 3%;
+	text-align: center;
+}
+
+.diretoria hr {
+	margin-top: 5%;
+	margin-bottom: 5%;
+	background: black;
+}

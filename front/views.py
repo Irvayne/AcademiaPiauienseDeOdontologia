@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from core.models import Estatuto, Sobre, Noticia, Curso
+from core.models import Estatuto, Sobre, Noticia, Curso, Diretoria
 
 def index(request):
 	noticias = Noticia.objects.all()
@@ -25,3 +25,8 @@ def index(request):
 def estatuto(request):
 	estatuto = Estatuto.objects.get(id=1)
 	return render(request, 'front_estatuto.html', {'estatuto': estatuto })
+
+
+def diretorias(request):
+	diretorias = Diretoria.objects.get(id=1)
+	return render(request, 'front_diretorias.html', {'diretorias': diretorias})
