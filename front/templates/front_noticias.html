@@ -1,0 +1,221 @@
+{% load staticfiles %}
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8">
+  <title>Academia Piauiense de Odontologia</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <!-- Favicons -->
+  <link href="{% static "img/favicon.png" %}" rel="icon">
+  <link href="{% static "img/apple-touch-icon.png" %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="{% static "lib/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="{% static "lib/nivo-slider/css/nivo-slider.css" %}" rel="stylesheet">
+  <link href="{% static "lib/owlcarousel/owl.carousel.css" %}" rel="stylesheet">
+  <link href="{% static "lib/owlcarousel/owl.transitions.css" %}" rel="stylesheet">
+  <link href="{% static "lib/font-awesome/css/font-awesome.min.css" %}" rel="stylesheet">
+  <link href="{% static "lib/animate/animate.min.css" %}" rel="stylesheet">
+  <link href="{% static "lib/venobox/venobox.css" %}" rel="stylesheet">
+
+  <!-- Nivo Slider Theme -->
+  <link href="{% static "css/nivo-slider-theme.css" %}" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="{% static "css/style.css" %}" rel="stylesheet">
+
+  <!-- Responsive Stylesheet File -->
+  <link href="{% static "css/responsive.css" %}" rel="stylesheet">
+
+  <link href="{% static "css/noticia.css" %}" rel="stylesheet">
+
+  <!-- =======================================================
+    Theme Name: eBusiness
+    Theme URL: https://bootstrapmade.com/ebusiness-bootstrap-corporate-template/
+    Author: BootstrapMade.com
+    License: https://bootstrapmade.com/license/
+  ======================================================= -->
+</head>
+
+<body data-spy="scroll" data-target="#navbar-example">
+  <header>
+    <!-- header-area start -->
+    <div id="sticker" class="header-area">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12">
+
+            <!-- Navigation -->
+            <nav class="navbar navbar-default">
+              <!-- Brand and toggle get grouped for better mobile display -->
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                <!-- Brand -->
+                <a class="navbar-brand page-scroll sticky-logo" href="index.html">
+                  <h1><span>Academia</span> Piauiense de Odontologia</h1>
+                </a>
+              </div>
+              <!-- Collect the nav links, forms, and other content for toggling -->
+              <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1" id="navbar-example">
+                <ul class="nav navbar-nav navbar-right">
+                  <li class="active">
+                    <a class="page-scroll" href="#home">Home</a>
+                  </li>
+                  <li>
+                    <a class="page-scroll" href="#sobre">Sobre</a>
+                  </li>
+                  <li>
+                    <a class="page-scroll" href="#cursos">Cursos</a>
+                  </li>
+                  <li>
+                    <a class="page-scroll" href="#noticias">Notícias</a>
+                  </li>
+                  <li>
+                    <a class="page-scroll" href="#contact">Contatos</a>
+                  </li>
+                  <li>
+                    <a href="#diretoria">Diretoria</a>
+                  </li>
+                  <li>
+                    <a class="page-scroll" href="#cadeiras">Cadeiras</a>
+                  </li>
+                  <li>
+                    <a href="{% url 'front_estatuto' %}">Regimento</a>
+                  </li>
+                </ul>
+              </div>
+              <!-- navbar-collapse -->
+            </nav>
+            <!-- END: Navigation -->
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- header-area end -->
+  </header>
+  <!-- header end -->
+
+  <div id="noticias" class="blog-area noticia">
+    <div class="blog-inner area-padding">
+      <div class="blog-overly"></div>
+      <div class="container ">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="section-headline text-center">
+              <h2>Últimas Notícias</h2>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <!-- Start Right Blog-->
+          {% for noticia in noticias %}
+          <div class="col-md-4 col-sm-4 col-xs-12 notice">
+            <div class="single-blog">
+              <div class="single-blog-img">
+                <a href="blog.html">
+                  <img src="http://aboe.com.br/wp-content/uploads/2017/08/baner-home.jpg" alt="">
+                </a>
+              </div>
+              <div class="blog-meta">
+                <span class="date-type">
+                  <i class="fa fa-calendar"></i> <b>Criado: </b>{{noticia.criado}}
+                </span>
+                <br>
+                <span class="date-type">
+                  <i class="fa fa-calendar"></i> <b>Alterado: </b>{{noticia.modificado}}
+                </span>
+              </div>
+              <div class="blog-text">
+                <h4>
+                  <a>{{noticia.titulo}}</a>
+                </h4>
+                <div id="div_conteudo_noticia{{noticia.id}}">
+                </div>
+
+                <input type="hidden" id="conteudo_noticia{{noticia.id}}" name="variable" value="{{ noticia.conteudo }}">
+                <input type="hidden" class="id_noticia" value="{{noticia.id}}">
+              </div>
+              <span>
+                <a href="blog.html" class="ready-btn">Ler Mais</a>
+              </span>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Start Footer bottom Area -->
+  <footer>
+    <div class="footer-area-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="copyright text-center">
+              <p>
+                &copy; Copyright <strong>eBusiness</strong>. All Rights Reserved
+              </p>
+            </div>
+            <div class="credits">
+              <!--
+                All the links in the footer should remain intact.
+                You can delete the links only if you purchased the pro version.
+                Licensing information: https://bootstrapmade.com/license/
+                Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=eBusiness
+              -->
+              Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+
+  <!-- JavaScript Libraries -->
+  <script src="{% static "lib/jquery/jquery.min.js" %}"></script>
+  <script src="{% static "lib/bootstrap/js/bootstrap.min.js" %}"></script>
+  <script src="{% static "lib/owlcarousel/owl.carousel.min.js" %}"></script>
+  <script src="{% static "lib/venobox/venobox.min.js" %}"></script>
+  <script src="{% static "lib/knob/jquery.knob.js" %}"></script>
+  <script src="{% static "lib/wow/wow.min.js" %}"></script>
+  <script src="{% static "lib/parallax/parallax.js" %}"></script>
+  <script src="{% static "lib/easing/easing.min.js" %}"></script>
+  <script src="{% static "lib/nivo-slider/js/jquery.nivo.slider.js" %}" type="text/javascript"></script>
+  <script src="{% static "lib/appear/jquery.appear.js" %}"></script>
+  <script src="{% static "lib/isotope/isotope.pkgd.min.js" %}"></script>
+  <!-- Uncomment below if you want to use dynamic Google Maps -->
+  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8HeI8o-c1NppZA-92oYlXakhDPYR7XMY"></script> -->
+
+  <!-- Contact Form JavaScript File -->
+  <script src="{% static "contactform/contactform.js" %}"></script>
+
+  <script src="{% static "js/main.js" %}"></script>
+
+  <script type="text/javascript"> 
+    var idsNoticias = document.getElementsByClassName("id_noticia");
+    for(var id = 0; id < idsNoticias.length; id++) {
+      string_conteudo_noticia = 'conteudo_noticia' + idsNoticias[id].value;
+      string_div_conteudo_noticia = 'div_conteudo_noticia' + idsNoticias[id].value;
+      var conteudoNoticias = document.getElementById(string_conteudo_noticia).value;
+      document.getElementById(string_div_conteudo_noticia).innerHTML = conteudoNoticias;
+    } 
+  </script>
+</body>
+
+</html>

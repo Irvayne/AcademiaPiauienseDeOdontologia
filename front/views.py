@@ -19,8 +19,12 @@ def index(request):
 		ultimos_cursos = cursos[len(cursos) - 2 : len(cursos)]
 	else:
 		ultimos_cursos = cursos
-		
+	
+	ultimas_noticias.reverse()
+	ultimos_cursos.reverse()
+
 	sobre = Sobre.objects.get(id=1)
+
 	return render(request, 'index.html', {'sobre': sobre, 'ultimas_noticias': ultimas_noticias, 'ultimos_cursos': ultimos_cursos})
 
 
@@ -32,3 +36,16 @@ def estatuto(request):
 def diretorias(request):
 	diretorias = Diretoria.objects.get(id=3)
 	return render(request, 'front_diretorias.html', {'diretorias': diretorias})
+
+
+def lista_noticias(request):
+	noticias = Noticia.objects.all()
+	lista_noticias = noticias
+	lista_noticias.reverse()
+
+	return render(request, 'front_noticias.html', {'noticias': lista_noticias})
+
+
+def lista_cursos(request):
+	cursos = Curso.objects.all()
+	return render(request, 'front_cursos.html', {'cursos': cursos})
