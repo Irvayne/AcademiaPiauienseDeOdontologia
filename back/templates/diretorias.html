@@ -14,23 +14,21 @@
 		<table class="table"> <thead>
 			<tr>
 				<th scope="col">Nome</th>
-				<th scope="col">Descrição</th>
+				<th scope="col">Editar</th>
 			</tr>
 		</thead>
 		<tbody>
 			{% for diretoria in diretorias %}
 			<tr>
 				<td>{{ diretoria.nome}}</td>
-				<td>{{ diretoria.descricao}}</td>
-				<td><a class="btn btn-success"><span class="glyphicon glyphicon-search"></span> Editar</a>
+				<td>
+					<a class="btn btn-success">
+						<span class="glyphicon glyphicon-pencil"></span> Editar
+					</a>
 				</td>
-
 			</tr>
-
 			{% endfor %}
-
 		</tbody></table>
 	</div>
 </div>
-
 {% endblock %}

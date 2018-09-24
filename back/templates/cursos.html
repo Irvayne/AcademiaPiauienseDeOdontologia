@@ -3,7 +3,6 @@
 
 <div class="panel-body">
 	<a type="button" href="{% url 'cursos_form' %}" class="btn btn-primary pull-right">Cadastrar</a>
-
 </div>
 
 <div class="panel panel-default">
@@ -15,7 +14,7 @@
 			<tr>
 				<th scope="col">Nome</th>
 				<th scope="col">Descrição</th>
-				<th scope="col">Conteúdo</th>
+				<th scope="col">Editar</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -23,16 +22,11 @@
 			<tr>
 				<td>{{ curso.nome}}</td>
 				<td>{{ curso.descricao}}</td>
-				<td>{{ curso.conteudo}}</td>
 				<td><a class="btn btn-success"><span class="glyphicon glyphicon-search"></span> Editar</a>
 				</td>
-
 			</tr>
-
 			{% endfor %}
-
 		</tbody></table>
 	</div>
 </div>
-
 {% endblock %}

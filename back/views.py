@@ -23,7 +23,10 @@ def estatuto_form(request):
 
 
 def noticias(request):
-	return render(request, 'noticias.html', {'noticias': Noticia.objects.all()})
+	noticias = Noticia.objects.all()
+	lista_noticias = noticias
+	lista_noticias.reverse()
+	return render(request, 'noticias.html', {'noticias': lista_noticias})
 
 def noticias_form(request):
 	if request.method == 'POST':

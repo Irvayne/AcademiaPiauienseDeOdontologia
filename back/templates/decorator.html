@@ -12,34 +12,15 @@
 
     <title>Área Restrita</title>
 
-    <!-- Bootstrap Core CSS -->
     <link href="{% static "vendor/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
     <link href="{% static "vendor/metisMenu/metisMenu.min.css" %}" rel="stylesheet">
-
-    <!-- Custom CSS -->
     <link href="{% static "dist/css/sb-admin-2.css" %}" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
     <link href="{% static "vendor/morrisjs/morris.css" %}" rel="stylesheet">
-
-    <!-- Custom Fonts -->
     <link href="{% static "vendor/font-awesome/css/font-awesome.min.css" %}" rel="stylesheet" type="text/css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
 </head>
 
 <body>
-
     <div id="wrapper">
-
         <!-- Navigation -->
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
@@ -81,25 +62,25 @@
                     <ul class="nav" id="side-menu">
                         
                         <li>
-                            <a href="{% url 'noticias' %}"><i class="fa fa-edit fa-fw"></i> Notícias</a>
+                            <a href="{% url 'noticias' %}"><i class="fa fa-newspaper-o fa-fw"></i> Notícias</a>
                         </li>
                         <li>
-                            <a href="{% url 'diretorias' %}"><i class="fa fa-edit fa-fw"></i> Diretoria</a>
+                            <a href="{% url 'diretorias' %}"><i class="fa fa-user fa-fw"></i> Diretoria</a>
                         </li>
                         <li>
-                            <a href="{% url 'membros' %}"><i class="fa fa-edit fa-fw"></i> Membros</a>
+                            <a href="{% url 'membros' %}"><i class="fa fa-users fa-fw"></i> Membros</a>
                         </li>
                         <li>
-                            <a href="{% url 'estatuto' %}"><i class="fa fa-edit fa-fw"></i> Estatuto</a>
+                            <a href="{% url 'estatuto' %}"><i class="fa fa-file fa-fw"></i> Estatuto</a>
                         </li>
                         <li>
-                            <a href="{% url 'cursos' %}"><i class="fa fa-edit fa-fw"></i> Cursos</a>
+                            <a href="{% url 'cursos' %}"><i class="fa fa-book fa-fw"></i> Cursos</a>
                         </li>
                         <li>
                             <a href="{% url 'cadeiras' %}"><i class="fa fa-edit fa-fw"></i> Cadeiras</a>
                         </li>
                         <li>
-                            <a href="{% url 'sobre' %}"><i class="fa fa-edit fa-fw"></i> Sobre</a>
+                            <a href="{% url 'sobre' %}"><i class="fa fa-file-o fa-fw"></i> Sobre</a>
                         </li>
                         
                     </ul>

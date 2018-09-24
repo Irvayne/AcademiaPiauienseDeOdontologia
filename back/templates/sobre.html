@@ -1,7 +1,7 @@
 {% extends "decorator.html" %}
 {% block body %}
 
-<a href="{% url 'sobre_form' %}" class="btn btn-success"><span class="glyphicon glyphicon-search"></span> Editar</a>
+<a href="{% url 'sobre_form' %}" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
 <div id="id_conteudo"></div>
 
 <input type="hidden" id="var" name="variable" value="{{ sobre.conteudo }}">
