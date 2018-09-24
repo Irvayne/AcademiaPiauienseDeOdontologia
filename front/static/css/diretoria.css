@@ -6,15 +6,15 @@
 .diretoria h1 {
 	font-size: 24px;
 	font-style: bold;
-	line-height: 5%;
+	line-height: 5px;
 	text-align: center;
 }
 
 .diretoria h2 {
 	font-size: 18px;
 	font-style: bold;
-	line-height: 0%;
-	margin-top: 3%;
+	line-height: 20px;
+	margin-top: 2%;
 	text-align: center;
 }
 
@@ -22,4 +22,8 @@
 	margin-top: 5%;
 	margin-bottom: 5%;
 	background: black;
+}
+
+.diretoria p {
+	line-height: 5px;
 }

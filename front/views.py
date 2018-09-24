@@ -34,7 +34,7 @@ def estatuto(request):
 
 
 def diretorias(request):
-	diretorias = Diretoria.objects.get(id=3)
+	diretorias = Diretoria.objects.get(id=5)
 	return render(request, 'front_diretorias.html', {'diretorias': diretorias})
 
 
