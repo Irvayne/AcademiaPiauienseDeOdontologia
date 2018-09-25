@@ -36,6 +36,12 @@ def noticias_form(request):
 	else:
 		return render(request, 'noticias_form.html')
 
+def noticias_remover(request, noticia_id):
+	noticia = Noticia.objects.get(id=noticia_id)
+	noticia.delete()
+	return redirect('noticias')
+
+
 def diretorias(request):
 	try:
 		diretorias = Diretoria.objects.all()
@@ -50,6 +56,11 @@ def diretorias_form(request):
 		return redirect('diretorias')
 	else:
 		return render(request, 'diretorias_form.html')
+
+def diretorias_remover(request, diretoria_id):
+	diretoria = Diretoria.objects.get(id=diretoria_id)
+	diretoria.delete()
+	return redirect('diretorias')
 
 def membros(request):
 	try:
@@ -66,6 +77,11 @@ def membros_form(request):
 	else:
 		return render(request, 'membros_form.html')
 
+def membros_remover(request, membro_id):
+	membro = Membro.objects.get(id=membro_id)
+	membro.delete()
+	return redirect('membros')
+
 def cursos(request):
 	try:
 		cursos = Curso.objects.all()
@@ -81,6 +97,11 @@ def cursos_form(request):
 	else:
 		return render(request, 'cursos_form.html')
 
+def cursos_remover(request, curso_id):
+	curso = Curso.objects.get(id=curso_id)
+	curso.delete()
+	return redirect('cursos')
+
 def cadeiras(request):
 	try:
 		cadeiras = Cadeira.objects.all()
@@ -95,6 +116,11 @@ def cadeiras_form(request):
 		return redirect('cadeiras')
 	else:
 		return render(request, 'cadeiras_form.html')
+
+def cadeiras_remover(request, cadeira_id):
+	cadeira = Cadeira.objects.get(id=cadeira_id)
+	cadeira.delete()
+	return redirect('cadeiras')
 
 def sobre(request):
 	try:

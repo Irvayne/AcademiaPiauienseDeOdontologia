@@ -25,11 +25,11 @@
 				<td>{{ noticia.subtitulo}}</td>
 				<td>{{ noticia.modificado}}</td>
 				<td>
-					<a class="btn btn-success">
+					<a class="btn btn-warning">
 						<span class="glyphicon glyphicon-pencil"></span> Editar
 					</a>
 					<a class="btn btn-danger" data-toggle="modal" data-target="#{{noticia.id}}">
-						<span class="glyphicon glyphicon-pencil"></span> Excluir
+						<span class="glyphicon glyphicon-remove"></span> Excluir
 					</a>
 
 					<div class="modal fade" id="{{noticia.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -42,10 +42,10 @@
 					        </button>
 					      </div>
 					      <div class="modal-body">
-					        Tem certeza que deseja excluir essa notícia? {{noticia.id}}
+					        Tem certeza que deseja excluir essa notícia?
 					      </div>
 					      <div class="modal-footer">
-					        <button type="button" class="btn btn-primary" >Sim</button>
+					      	<a type="button" href="{% url 'noticias_remover' noticia.id %}" class="btn btn-success">Sim</a>
 					        <button type="button" class="btn btn-danger" data-dismiss="modal">Não</button>
 					      </div>
 					    </div>
