@@ -1,9 +1,18 @@
 {% extends "decorator.html" %}
 {% block body %}
 
-<a href="{% url 'estatuto_form' %}" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
+<div class="panel-body">
+	<a href="{% url 'estatuto_form' %}" class="btn btn-success pull-right"><span class="glyphicon glyphicon-pencil"></span> Editar</a>
+</div>
 
-<div id="id_conteudo"></div>
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Estatuto</h3>
+	</div>
+	<div class="panel-body">
+		<div id="id_conteudo"></div>
+	</div>
+</div>
 
 <input type="hidden" id="var" name="variable" value="{{ estatuto.conteudo }}">
 
