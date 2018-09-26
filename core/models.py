@@ -40,6 +40,7 @@ class Cadeira(models.Model):
 class Sobre(models.Model):
 	titulo = models.CharField(max_length=1000)
 	conteudo = models.CharField(max_length=1000)
+	imagem = models.ImageField(upload_to='imagens/', blank=True, null=True)
 
 
 class Contato(models.Model):

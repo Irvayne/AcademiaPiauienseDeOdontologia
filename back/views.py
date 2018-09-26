@@ -30,12 +30,15 @@ def noticias(request):
 	return render(request, 'noticias.html', {'noticias': lista_noticias})
 
 def noticias_form(request):
-	if request.method == 'POST' and request.FILES['imagem']:
-		imagem = request.FILES['imagem']
-		fs = FileSystemStorage()
-		filename = fs.save(imagem.name, imagem)
-		uploaded_file_url = fs.url(filename)
-		noticia = Noticia(titulo=request.POST['titulo'], subtitulo=request.POST['subtitulo'], conteudo=request.POST['conteudo'], imagem=uploaded_file_url)
+	if request.method == 'POST':
+		if request.FILES['imagem']:
+			imagem = request.FILES['imagem']
+			fs = FileSystemStorage()
+			filename = fs.save(imagem.name, imagem)
+			uploaded_file_url = fs.url(filename)
+			noticia = Noticia(titulo=request.POST['titulo'], subtitulo=request.POST['subtitulo'], conteudo=request.POST['conteudo'], imagem=uploaded_file_url)
+		else:
+			noticia = Noticia(titulo=request.POST['titulo'], subtitulo=request.POST['subtitulo'], conteudo=request.POST['conteudo'], imagem=None)
 		noticia.save()
 		return redirect('noticias')
 	else:
@@ -138,9 +141,14 @@ def sobre(request):
 
 def sobre_form(request):
 	sobre = Sobre.objects.get(id=1)
-	if request.method == 'POST':
+	if request.method == 'POST' and request.FILES['imagem']:
+		imagem = request.FILES['imagem']
+		fs = FileSystemStorage()
+		filename = fs.save(imagem.name, imagem)
+		uploaded_file_url = fs.url(filename)
 		sobre.titulo = request.POST['titulo']
 		sobre.conteudo = request.POST['conteudo']
+		sobre.imagem = uploaded_file_url
 		sobre.save()
 		return redirect('sobre')
 	else: 	
