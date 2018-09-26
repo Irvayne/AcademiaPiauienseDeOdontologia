@@ -13,14 +13,14 @@ def estatuto(request):
 		estatuto.save()
 	return render(request, 'estatuto.html', {'estatuto': estatuto})
 
-def estatuto_form(request):
+def estatuto_editar(request):
 	estatuto = Estatuto.objects.get(id=1)
 	if request.method == 'POST':
 		estatuto.conteudo = request.POST['estatuto_conteudo']
 		estatuto.save()
 		return redirect('estatuto')
 	else:
-		return render(request, 'estatuto_form.html', {'estatuto': estatuto })
+		return render(request, 'estatuto_editar.html', {'estatuto': estatuto })
 
 
 def noticias(request):
@@ -29,7 +29,7 @@ def noticias(request):
 	lista_noticias.reverse()
 	return render(request, 'noticias.html', {'noticias': lista_noticias})
 
-def noticias_form(request):
+def noticias_cadastrar(request):
 	if request.method == 'POST':
 		if request.FILES['imagem']:
 			imagem = request.FILES['imagem']
@@ -42,7 +42,8 @@ def noticias_form(request):
 		noticia.save()
 		return redirect('noticias')
 	else:
-		return render(request, 'noticias_form.html')
+		return render(request, 'noticias_cadastrar.html')
+
 
 def noticias_remover(request, noticia_id):
 	noticia = Noticia.objects.get(id=noticia_id)
@@ -57,13 +58,13 @@ def diretorias(request):
 		diretorias = []
 	return render(request, 'diretorias.html', {'diretorias': diretorias})
 
-def diretorias_form(request):
+def diretorias_cadastrar(request):
 	if request.method == 'POST':
 		diretoria = Diretoria(nome=request.POST['nome'], descricao=request.POST['descricao'])
 		diretoria.save()
 		return redirect('diretorias')
 	else:
-		return render(request, 'diretorias_form.html')
+		return render(request, 'diretorias_cadastrar.html')
 
 def diretorias_remover(request, diretoria_id):
 	diretoria = Diretoria.objects.get(id=diretoria_id)
@@ -77,13 +78,13 @@ def membros(request):
 		membros = []
 	return render(request, 'membros.html', {'membros': membros})
 
-def membros_form(request):
+def membros_cadastrar(request):
 	if request.method == 'POST':
 		membro = Membro(nome=request.POST['nome'], descricao=request.POST['descricao'])
 		membro.save()
 		return redirect('membros')
 	else:
-		return render(request, 'membros_form.html')
+		return render(request, 'membros_cadastrar.html')
 
 def membros_remover(request, membro_id):
 	membro = Membro.objects.get(id=membro_id)
@@ -97,13 +98,13 @@ def cursos(request):
 		cursos = []
 	return render(request, 'cursos.html', {'cursos': cursos})
 
-def cursos_form(request):
+def cursos_cadastrar(request):
 	if request.method == 'POST':
 		curso = Curso(nome=request.POST['nome'], descricao=request.POST['descricao'], conteudo=request.POST['conteudo'])
 		curso.save()
 		return redirect('cursos')
 	else:
-		return render(request, 'cursos_form.html')
+		return render(request, 'cursos_cadastrar.html')
 
 def cursos_remover(request, curso_id):
 	curso = Curso.objects.get(id=curso_id)
@@ -117,13 +118,13 @@ def cadeiras(request):
 		cadeiras = []
 	return render(request, 'cadeiras.html', {'cadeiras': cadeiras})
 
-def cadeiras_form(request):
+def cadeiras_cadastrar(request):
 	if request.method == 'POST':
 		cadeira = Cadeira(nome=request.POST['nome'], descricao=request.POST['descricao'])
 		cadeira.save()
 		return redirect('cadeiras')
 	else:
-		return render(request, 'cadeiras_form.html')
+		return render(request, 'cadeiras_cadastrar.html')
 
 def cadeiras_remover(request, cadeira_id):
 	cadeira = Cadeira.objects.get(id=cadeira_id)
@@ -139,7 +140,7 @@ def sobre(request):
 
 	return render(request, 'sobre.html', {'sobre': sobre })
 
-def sobre_form(request):
+def sobre_editar(request):
 	sobre = Sobre.objects.get(id=1)
 	if request.method == 'POST' and request.FILES['imagem']:
 		imagem = request.FILES['imagem']
@@ -152,6 +153,6 @@ def sobre_form(request):
 		sobre.save()
 		return redirect('sobre')
 	else: 	
-		return render(request, 'sobre_form.html', {'sobre': sobre })
+		return render(request, 'sobre_editar.html', {'sobre': sobre })
 
 
