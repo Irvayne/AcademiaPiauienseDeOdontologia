@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from core.models import Estatuto, Noticia, Diretoria, Membro, Curso, Cadeira, Sobre
+from django.core.files.storage import FileSystemStorage
 
 def home(request):
 	return render(request, 'home.html')
@@ -29,8 +30,12 @@ def noticias(request):
 	return render(request, 'noticias.html', {'noticias': lista_noticias})
 
 def noticias_form(request):
-	if request.method == 'POST':
-		noticia = Noticia(titulo=request.POST['titulo'], subtitulo=request.POST['subtitulo'], conteudo=request.POST['conteudo'])
+	if request.method == 'POST' and request.FILES['imagem']:
+		imagem = request.FILES['imagem']
+		fs = FileSystemStorage()
+		filename = fs.save(imagem.name, imagem)
+		uploaded_file_url = fs.url(filename)
+		noticia = Noticia(titulo=request.POST['titulo'], subtitulo=request.POST['subtitulo'], conteudo=request.POST['conteudo'], imagem=uploaded_file_url)
 		noticia.save()
 		return redirect('noticias')
 	else:

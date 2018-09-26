@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% block body %}
 
-<form accept="{% url 'noticias_form' %}" method="POST">
+<form accept="{% url 'noticias_form' %}" method="POST" enctype="multipart/form-data">
 	{% csrf_token %}
 	<div class="form-group">
 		<label for="id_titulo">Título</label>
@@ -11,6 +11,10 @@
 	<div class="form-group">
 		<label for="id_subtitulo">Subtítulo</label>
 		<input type="text" name="subtitulo" class="form-control" id="id_subtitulo" placeholder="Subtítulo da notícia">
+	</div>
+	<div class="form-group">
+		<label for="id_imagem">Imagem</label>
+		<input type="file" name="imagem" class="form-control" id="id_imagem" placeholder="Imagem">
 	</div>
 	<div class="form-group">
 		<label for="id_conteudo">Conteúdo</label>

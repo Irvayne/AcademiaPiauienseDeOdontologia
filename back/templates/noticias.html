@@ -15,15 +15,17 @@
 				<th scope="col">Título</th>
 				<th scope="col">Subtítulo</th>
 				<th scope="col">Modificação</th>
+				<th scope="col">Imagem</th>
 				<th scope="col">Opções</th>
 			</tr>
 		</thead>
 		<tbody>
 			{% for noticia in noticias %}
 			<tr>
-				<td>{{ noticia.titulo}}</td>
-				<td>{{ noticia.subtitulo}}</td>
-				<td>{{ noticia.modificado}}</td>
+				<td>{{ noticia.titulo }}</td>
+				<td>{{ noticia.subtitulo }}</td>
+				<td>{{ noticia.modificado }}</td>
+				<td>{{ noticia.imagem }}</td>
 				<td>
 					<a class="btn btn-warning">
 						<span class="glyphicon glyphicon-pencil"></span> Editar
@@ -36,7 +38,7 @@
 					  <div class="modal-dialog" role="document">
 					    <div class="modal-content">
 					      <div class="modal-header">
-					        <h5 class="modal-title" >Alerta de Confirmação</h5>
+					        <h5 class="modal-title">Alerta de Confirmação</h5>
 					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 					          <span aria-hidden="true">&times;</span>
 					        </button>
@@ -56,6 +58,7 @@
 			</tr>
 			{% endfor %}
 		</tbody></table>
+		{{uploaded_file_url}}
 	</div>
 </div>
 {% endblock %}
