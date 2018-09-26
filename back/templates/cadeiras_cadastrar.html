@@ -1,7 +1,7 @@
 {% extends 'decorator.html' %}
 {% block body %}
 
-<form accept="{% url 'cadeiras_form' %}" method="POST">
+<form accept="{% url 'cadeiras_cadastrar' %}" method="POST">
 	{% csrf_token %}
 	<div class="form-group">
 		<label for="id_nome">Nome</label>

@@ -44,6 +44,25 @@ def noticias_cadastrar(request):
 	else:
 		return render(request, 'noticias_cadastrar.html')
 
+def noticias_editar(request, noticia_id):
+	noticia = Noticia.objects.get(id=noticia_id)
+	if request.method == 'POST':
+		noticia.titulo = request.POST['titulo']
+		noticia.subtitulo = request.POST['subtitulo']
+		noticia.conteudo = request.POST['conteudo']
+		if request.FILES['imagem']:
+			imagem = request.FILES['imagem']
+			fs = FileSystemStorage()
+			filename = fs.save(imagem.name, imagem)
+			uploaded_file_url = fs.url(filename)
+			noticia.imagem=uploaded_file_url
+		else:
+			noticia.imagem=None
+		noticia.save()
+		return redirect('noticias')
+	else:
+		return render(request, 'noticias_editar.html', {'noticia': noticia})
+
 
 def noticias_remover(request, noticia_id):
 	noticia = Noticia.objects.get(id=noticia_id)

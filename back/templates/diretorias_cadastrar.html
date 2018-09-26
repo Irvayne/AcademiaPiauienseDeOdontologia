@@ -2,7 +2,7 @@
 {% load staticfiles %}
 {% block body %}
 
-<form accept="{% url 'diretorias_form' %}" method="POST">
+<form accept="{% url 'diretorias_cadastrar' %}" method="POST">
 	{% csrf_token %}
 	<div class="form-group">
 		<label for="id_nome">Nome</label>

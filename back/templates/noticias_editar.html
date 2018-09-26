@@ -2,23 +2,23 @@
 {% load staticfiles %}
 {% block body %}
 
-<form accept="{% url 'noticias_cadastrar' %}" method="POST" enctype="multipart/form-data">
+<form accept="{% url 'noticias_editar' noticia.id%}" method="POST" enctype="multipart/form-data">
 	{% csrf_token %}
 	<div class="form-group">
 		<label for="id_titulo">Título</label>
-		<input type="text" name="titulo" class="form-control" id="id_titulo" placeholder="Título da notícia">
+		<input type="text" name="titulo" class="form-control" id="id_titulo" value="{{noticia.titulo}}" placeholder="Título da notícia">
 	</div>
 	<div class="form-group">
 		<label for="id_subtitulo">Subtítulo</label>
-		<input type="text" name="subtitulo" class="form-control" id="id_subtitulo" placeholder="Subtítulo da notícia">
+		<input type="text" name="subtitulo" class="form-control" id="id_subtitulo" value="{{noticia.subtitulo}}" placeholder="Subtítulo da notícia">
 	</div>
 	<div class="form-group">
 		<label for="id_imagem">Imagem</label>
-		<input type="file" name="imagem" class="form-control" id="id_imagem" placeholder="Imagem">
+		<input type="file" name="imagem" class="form-control" id="id_imagem" value="{{noticia.imagem}}" placeholder="Imagem">
 	</div>
 	<div class="form-group">
 		<label for="id_conteudo">Conteúdo</label>
-		<textarea id="id_conteudo" name="conteudo" ></textarea>
+		<textarea id="id_conteudo" name="conteudo" >{{noticia.titulo}}</textarea>
 	</div>
 	<button class="btn btn-primary">Salvar</button>
 </form>
