@@ -1,0 +1,25 @@
+{% extends 'decorator.html' %}
+{% load staticfiles %}
+{% block body %}
+
+<form accept="{% url 'diretorias_editar' diretoria.id %}" method="POST">
+	{% csrf_token %}
+	<div class="form-group">
+		<label for="id_nome">Nome</label>
+		<input type="text" name="nome" class="form-control" id="id_nome" value="{{diretoria.nome}}" placeholder="Nome da diretoria">
+	</div>
+	<div class="form-group">
+		<label for="id_descricao">Descrição</label>
+		<textarea id="id_descricao" name="descricao" >{{diretoria.descricao}}</textarea>
+	</div>
+	
+	<button class="btn btn-primary">Salvar</button>
+
+</form>
+
+<script src="{% static "ckeditor/ckeditor.js" %}"></script>
+<script>
+    CKEDITOR.replace( 'id_descricao' );
+</script>
+
+{% endblock %}

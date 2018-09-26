@@ -2,7 +2,7 @@
 {% block body %}
 
 <div class="panel-body">
-	<a type="button" href="{% url 'diretorias_form' %}" class="btn btn-primary pull-right">Cadastrar</a>
+	<a type="button" href="{% url 'diretorias_cadastrar' %}" class="btn btn-primary pull-right">Cadastrar</a>
 
 </div>
 
@@ -22,8 +22,8 @@
 			<tr>
 				<td>{{ diretoria.nome}}</td>
 				<td>
-					<a class="btn btn-warning">
-						<span class="glyphicon glyphicon-pencil"></span> Editar
+					<a class="btn btn-warning" href="{% url 'diretorias_editar' diretoria.id %}">
+						<span class="glyphicon glyphicon-pencil"  ></span> Editar
 					</a>
 					<a class="btn btn-danger" data-toggle="modal" data-target="#{{diretoria.id}}">
 						<span class="glyphicon glyphicon-remove"></span> Excluir

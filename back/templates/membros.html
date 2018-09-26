@@ -2,7 +2,7 @@
 {% block body %}
 
 <div class="panel-body">
-	<a type="button" href="{% url 'membros_form' %}" class="btn btn-primary pull-right">Cadastrar</a>
+	<a type="button" href="{% url 'membros_cadastrar' %}" class="btn btn-primary pull-right">Cadastrar</a>
 </div>
 
 <div class="panel panel-default">
@@ -21,7 +21,7 @@
 			<tr>
 				<td>{{ membro.nome}}</td>
 				<td>
-					<a class="btn btn-warning">
+					<a class="btn btn-warning" href="{% url 'membros_editar' membro.id %}">
 						<span class="glyphicon glyphicon-pencil"></span> Editar
 					</a>
 					<a class="btn btn-danger" data-toggle="modal" data-target="#{{membro.id}}">

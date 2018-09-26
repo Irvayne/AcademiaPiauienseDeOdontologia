@@ -4,7 +4,7 @@
 
 {% block body %}
 <div id="dvCentro">
-    <form accept="{% url 'estatuto_cadastrar' %}" method="post">
+    <form accept="{% url 'estatuto_editar' %}" method="post">
         {% csrf_token %}
         <textarea id="id_estatuto_conteudo" name="estatuto_conteudo" >{{ estatuto.conteudo}}</textarea>
         <button type="submit" class="btn btn-primary"> <span class="glyphicon glyphicon-plus "></span> Salvar</button>

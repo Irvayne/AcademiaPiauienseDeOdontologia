@@ -1,0 +1,18 @@
+{% extends 'decorator.html' %}
+{% block body %}
+
+<form accept="{% url 'membros_editar' membro.id %}" method="POST">
+	{% csrf_token %}
+	<div class="form-group">
+		<label for="id_nome">Nome</label>
+		<input type="text" name="nome" class="form-control" id="id_nome" value="{{membro.nome}}" placeholder="Nome do membro">
+	</div>
+	<div class="form-group">
+		<label for="id_descricao">Descrição</label>
+		<input type="text" name="descricao" class="form-control" id="id_descricao" value="{{membro.descricao}}" placeholder="Descrição da membro">
+	</div>
+	
+	<button class="btn btn-primary">Salvar</button>
+</form>
+
+{% endblock %}

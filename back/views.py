@@ -85,6 +85,16 @@ def diretorias_cadastrar(request):
 	else:
 		return render(request, 'diretorias_cadastrar.html')
 
+def diretorias_editar(request, diretoria_id):
+	diretoria = Diretoria.objects.get(id=diretoria_id)
+	if request.method == 'POST':
+		diretoria.nome = request.POST['nome']
+		diretoria.descricao = request.POST['descricao']
+		diretoria.save()
+		return redirect('diretorias')
+	else:
+		return render(request, 'diretorias_editar.html', {'diretoria':diretoria})
+
 def diretorias_remover(request, diretoria_id):
 	diretoria = Diretoria.objects.get(id=diretoria_id)
 	diretoria.delete()
@@ -104,6 +114,16 @@ def membros_cadastrar(request):
 		return redirect('membros')
 	else:
 		return render(request, 'membros_cadastrar.html')
+
+def membros_editar(request, membro_id):
+	membro = Membro.objects.get(id=membro_id)
+	if request.method == 'POST':
+		membro.nome = request.POST['nome']
+		membro.descricao = request.POST['descricao']
+		membro.save()
+		return redirect('membros')
+	else:
+		return render(request, 'membros_editar.html', {'membro': membro})
 
 def membros_remover(request, membro_id):
 	membro = Membro.objects.get(id=membro_id)
@@ -125,6 +145,17 @@ def cursos_cadastrar(request):
 	else:
 		return render(request, 'cursos_cadastrar.html')
 
+def cursos_editar(request, curso_id):
+	curso = Curso.objects.get(id=curso_id)
+	if request.method == 'POST':
+		curso.nome = request.POST['nome']
+		curso.descricao = request.POST['descricao']
+		curso.conteudo = request.POST['conteudo']
+		curso.save()
+		return redirect('cursos')
+	else:
+		return render(request, 'cursos_editar.html', {'curso': curso})
+
 def cursos_remover(request, curso_id):
 	curso = Curso.objects.get(id=curso_id)
 	curso.delete()
@@ -144,6 +175,16 @@ def cadeiras_cadastrar(request):
 		return redirect('cadeiras')
 	else:
 		return render(request, 'cadeiras_cadastrar.html')
+
+def cadeiras_editar(request, cadeira_id):
+	cadeira = Cadeira.objects.get(id=cadeira_id)
+	if request.method == 'POST':
+		cadeira.nome = request.POST['nome']
+		cadeira.descricao = request.POST['descricao']
+		cadeira.save()
+		return redirect('cadeiras')
+	else:
+		return render(request, 'cadeiras_editar.html', {'cadeira': cadeira})
 
 def cadeiras_remover(request, cadeira_id):
 	cadeira = Cadeira.objects.get(id=cadeira_id)

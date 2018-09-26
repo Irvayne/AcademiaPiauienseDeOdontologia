@@ -1,0 +1,21 @@
+{% extends 'decorator.html' %}
+{% block body %}
+
+<form accept="{% url 'cursos_editar' curso.id %}" method="POST">
+	{% csrf_token %}
+	<div class="form-group">
+		<label for="id_nome">Nome</label>
+		<input type="text" name="nome" class="form-control" id="id_nome" value="{{curso.nome}}" placeholder="Nome do curso">
+	</div>
+	<div class="form-group">
+		<label for="id_descricao">Descrição</label>
+		<input type="text" name="descricao" class="form-control" id="id_descricao" value="{{curso.descricao}}" placeholder="Descrição da curso">
+	</div>
+	<div class="form-group">
+		<label for="id_conteudo">Conteúdo</label>
+		<input type="text" name="conteudo" class="form-control" id="id_conteudo" value="{{curso.conteudo}}" placeholder="Conteúdo do curso">
+	</div>
+	<button class="btn btn-primary">Salvar</button>
+</form>
+
+{% endblock %}
