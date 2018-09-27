@@ -1,0 +1,30 @@
+{% extends 'decorator.html' %}
+{% load staticfiles %}
+
+{% block body %}
+<div id="dvCentro">
+    <form accept="{% url 'home_editar' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group">
+			<label for="id_telefone">Telefone</label>
+			<input type="text" name="telefone" class="form-control" id="id_telefone" placeholder="Telefone" value="{{home.telefone}}">
+		</div>
+		<div class="form-group">
+			<label for="id_email">E-mail</label>
+			<input type="email" name="email" class="form-control" id="id_email" placeholder="E-mail" value="{{home.email}}">
+		</div>
+		<div class="form-group">
+			<label for="id_localizacao">Localização</label>
+			<input type="text" name="localizadao" class="form-control" id="id_localizacao" placeholder="Localização" value="{{home.localizadao}}">
+		</div>
+		<div class="form-group">
+			<label for="id_imagem">Imagem</label>
+			<input type="file" name="imagem" class="form-control" id="id_imagem" placeholder="Imagem">
+		</div>
+		<button class="btn btn-primary">Salvar</button>
+    </form>
+</div>
+
+<a href="{% url 'home'  %}" class="btn btn-success"><span class="glyphicon glyphicon-search"></span> Cancelar</a>
+
+{% endblock %}

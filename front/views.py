@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from core.models import Estatuto, Sobre, Noticia, Curso, Diretoria
+from core.models import Estatuto, Sobre, Noticia, Curso, Diretoria, Home
 
 
 def index(request):
@@ -24,8 +24,9 @@ def index(request):
 	ultimos_cursos.reverse()
 
 	sobre = Sobre.objects.get(id=1)
+	home = Home.objects.get(id=1)
 
-	return render(request, 'index.html', {'sobre': sobre, 'ultimas_noticias': ultimas_noticias, 'ultimos_cursos': ultimos_cursos})
+	return render(request, 'index.html', {'sobre': sobre, 'ultimas_noticias': ultimas_noticias, 'ultimos_cursos': ultimos_cursos, 'home': home})
 
 
 def estatuto(request):

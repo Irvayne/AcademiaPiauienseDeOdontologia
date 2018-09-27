@@ -43,7 +43,8 @@ class Sobre(models.Model):
 	imagem = models.ImageField(upload_to='imagens/', blank=True, null=True)
 
 
-class Contato(models.Model):
+class Home(models.Model):
 	telefone = models.CharField(max_length=50)
 	email = models.CharField(max_length=50)
 	localizadao = models.CharField(max_length=100)
+	imagem = models.ImageField(upload_to='imagens/', blank=True, null=True)
