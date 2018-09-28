@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from core.models import Estatuto, Noticia, Diretoria, Membro, Curso, Cadeira, Sobre, Home
 from django.core.files.storage import FileSystemStorage
+from django.core.mail import EmailMessage
 
 
 def home(request):
@@ -251,3 +252,16 @@ def sobre_editar(request):
 		return redirect('sobre')
 	else: 	
 		return render(request, 'sobre_editar.html', {'sobre': sobre })
+
+def email_enviar(request):
+	request.POST['nome']
+	request.POST['email']
+	email = EmailMessage(request.POST['assunto'], request.POST['mensagem'], to=['irvaynematheus@hotmail.com'])
+	email.send()
+	return redirect('index')
+
+
+
+
+
+
