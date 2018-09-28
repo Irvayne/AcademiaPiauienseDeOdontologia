@@ -52,8 +52,8 @@ def noticias(request):
 
 def noticias_cadastrar(request):
 	if request.method == 'POST':
-		if request.FILES['imagem']:
-			imagem = request.FILES['imagem']
+		imagem = request.FILES.get('imagem', False)
+		if imagem:
 			fs = FileSystemStorage()
 			filename = fs.save(imagem.name, imagem)
 			uploaded_file_url = fs.url(filename)
@@ -72,14 +72,12 @@ def noticias_editar(request, noticia_id):
 		noticia.titulo = request.POST['titulo']
 		noticia.subtitulo = request.POST['subtitulo']
 		noticia.conteudo = request.POST['conteudo']
-		if request.FILES['imagem']:
-			imagem = request.FILES['imagem']
+		imagem = request.FILES.get('imagem', False)
+		if imagem:
 			fs = FileSystemStorage()
 			filename = fs.save(imagem.name, imagem)
 			uploaded_file_url = fs.url(filename)
 			noticia.imagem=uploaded_file_url
-		else:
-			noticia.imagem=None
 		noticia.save()
 		return redirect('noticias')
 	else:
@@ -241,8 +239,8 @@ def sobre(request):
 
 def sobre_editar(request):
 	sobre = Sobre.objects.get(id=1)
-	if request.method == 'POST' and request.FILES['imagem']:
-		imagem = request.FILES['imagem']
+	imagem = request.FILES.get('imagem', False)
+	if request.method == 'POST' and imagem:
 		fs = FileSystemStorage()
 		filename = fs.save(imagem.name, imagem)
 		uploaded_file_url = fs.url(filename)
