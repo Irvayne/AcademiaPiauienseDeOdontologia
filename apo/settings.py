@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'core',
     'front',
-    'back'
+    'back',
+    'usuario'
 ]
 
 MIDDLEWARE = [
@@ -124,6 +125,12 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'irvaynematheus@gmail.com'
 EMAIL_HOST_PASSWORD = 'senha'
+
+APPEND_SLASH = True
+
+LOGIN_URL='/admin/login/'
+LOGOUT_URL='/admin/logout/'
+LOGIN_REDIRECT_URL='/'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.0/howto/static-files/

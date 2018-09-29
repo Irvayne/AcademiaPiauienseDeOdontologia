@@ -2,8 +2,9 @@ from django.shortcuts import render, redirect
 from core.models import Estatuto, Noticia, Diretoria, Membro, Curso, Cadeira, Sobre, Home
 from django.core.files.storage import FileSystemStorage
 from django.core.mail import EmailMessage
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def home(request):
 	try:
 		home = Home.objects.get(id=1)
@@ -12,7 +13,7 @@ def home(request):
 		home.save()
 	return render(request, 'home.html', {'home': home})
 
-
+@login_required
 def home_editar(request):
 	home = Home.objects.get(id=1)
 	if request.method == 'POST':
@@ -24,7 +25,7 @@ def home_editar(request):
 	else:
 		return render(request, 'home_editar.html', {'home': home})
 
-
+@login_required
 def estatuto(request):
 	try:
 		estatuto = Estatuto.objects.get(id=1)
@@ -33,7 +34,7 @@ def estatuto(request):
 		estatuto.save()
 	return render(request, 'estatuto.html', {'estatuto': estatuto})
 
-
+@login_required
 def estatuto_editar(request):
 	estatuto = Estatuto.objects.get(id=1)
 	if request.method == 'POST':
@@ -43,14 +44,14 @@ def estatuto_editar(request):
 	else:
 		return render(request, 'estatuto_editar.html', {'estatuto': estatuto })
 
-
+@login_required
 def noticias(request):
 	noticias = Noticia.objects.all()
 	lista_noticias = noticias
 	lista_noticias.reverse()
 	return render(request, 'noticias.html', {'noticias': lista_noticias})
 
-
+@login_required
 def noticias_cadastrar(request):
 	if request.method == 'POST':
 		imagem = request.FILES.get('imagem', False)
@@ -66,7 +67,7 @@ def noticias_cadastrar(request):
 	else:
 		return render(request, 'noticias_cadastrar.html')
 
-
+@login_required
 def noticias_editar(request, noticia_id):
 	noticia = Noticia.objects.get(id=noticia_id)
 	if request.method == 'POST':
@@ -84,13 +85,13 @@ def noticias_editar(request, noticia_id):
 	else:
 		return render(request, 'noticias_editar.html', {'noticia': noticia})
 
-
+@login_required
 def noticias_remover(request, noticia_id):
 	noticia = Noticia.objects.get(id=noticia_id)
 	noticia.delete()
 	return redirect('noticias')
 
-
+@login_required
 def diretorias(request):
 	try:
 		diretorias = Diretoria.objects.all()
@@ -98,7 +99,7 @@ def diretorias(request):
 		diretorias = []
 	return render(request, 'diretorias.html', {'diretorias': diretorias})
 
-
+@login_required
 def diretorias_cadastrar(request):
 	if request.method == 'POST':
 		diretoria = Diretoria(nome=request.POST['nome'], descricao=request.POST['descricao'])
@@ -107,7 +108,7 @@ def diretorias_cadastrar(request):
 	else:
 		return render(request, 'diretorias_cadastrar.html')
 
-
+@login_required
 def diretorias_editar(request, diretoria_id):
 	diretoria = Diretoria.objects.get(id=diretoria_id)
 	if request.method == 'POST':
@@ -118,13 +119,13 @@ def diretorias_editar(request, diretoria_id):
 	else:
 		return render(request, 'diretorias_editar.html', {'diretoria':diretoria})
 
-
+@login_required
 def diretorias_remover(request, diretoria_id):
 	diretoria = Diretoria.objects.get(id=diretoria_id)
 	diretoria.delete()
 	return redirect('diretorias')
 
-
+@login_required
 def membros(request):
 	try:
 		membros = Membro.objects.all()
@@ -132,7 +133,7 @@ def membros(request):
 		membros = []
 	return render(request, 'membros.html', {'membros': membros})
 
-
+@login_required
 def membros_cadastrar(request):
 	if request.method == 'POST':
 		membro = Membro(nome=request.POST['nome'], descricao=request.POST['descricao'])
@@ -141,7 +142,7 @@ def membros_cadastrar(request):
 	else:
 		return render(request, 'membros_cadastrar.html')
 
-
+@login_required
 def membros_editar(request, membro_id):
 	membro = Membro.objects.get(id=membro_id)
 	if request.method == 'POST':
@@ -152,13 +153,13 @@ def membros_editar(request, membro_id):
 	else:
 		return render(request, 'membros_editar.html', {'membro': membro})
 
-
+@login_required
 def membros_remover(request, membro_id):
 	membro = Membro.objects.get(id=membro_id)
 	membro.delete()
 	return redirect('membros')
 
-
+@login_required
 def cursos(request):
 	try:
 		cursos = Curso.objects.all()
@@ -166,7 +167,7 @@ def cursos(request):
 		cursos = []
 	return render(request, 'cursos.html', {'cursos': cursos})
 
-
+@login_required
 def cursos_cadastrar(request):
 	if request.method == 'POST':
 		curso = Curso(nome=request.POST['nome'], descricao=request.POST['descricao'], conteudo=request.POST['conteudo'])
@@ -175,7 +176,7 @@ def cursos_cadastrar(request):
 	else:
 		return render(request, 'cursos_cadastrar.html')
 
-
+@login_required
 def cursos_editar(request, curso_id):
 	curso = Curso.objects.get(id=curso_id)
 	if request.method == 'POST':
@@ -187,13 +188,13 @@ def cursos_editar(request, curso_id):
 	else:
 		return render(request, 'cursos_editar.html', {'curso': curso})
 
-
+@login_required
 def cursos_remover(request, curso_id):
 	curso = Curso.objects.get(id=curso_id)
 	curso.delete()
 	return redirect('cursos')
 
-
+@login_required
 def cadeiras(request):
 	try:
 		cadeiras = Cadeira.objects.all()
@@ -201,7 +202,7 @@ def cadeiras(request):
 		cadeiras = []
 	return render(request, 'cadeiras.html', {'cadeiras': cadeiras})
 
-
+@login_required
 def cadeiras_cadastrar(request):
 	if request.method == 'POST':
 		cadeira = Cadeira(nome=request.POST['nome'], descricao=request.POST['descricao'])
@@ -210,7 +211,7 @@ def cadeiras_cadastrar(request):
 	else:
 		return render(request, 'cadeiras_cadastrar.html')
 
-
+@login_required
 def cadeiras_editar(request, cadeira_id):
 	cadeira = Cadeira.objects.get(id=cadeira_id)
 	if request.method == 'POST':
@@ -221,13 +222,13 @@ def cadeiras_editar(request, cadeira_id):
 	else:
 		return render(request, 'cadeiras_editar.html', {'cadeira': cadeira})
 
-
+@login_required
 def cadeiras_remover(request, cadeira_id):
 	cadeira = Cadeira.objects.get(id=cadeira_id)
 	cadeira.delete()
 	return redirect('cadeiras')
 
-
+@login_required
 def sobre(request):
 	try:
 		sobre = Sobre.objects.get(id=1)
@@ -237,7 +238,7 @@ def sobre(request):
 
 	return render(request, 'sobre.html', {'sobre': sobre })
 
-
+@login_required
 def sobre_editar(request):
 	sobre = Sobre.objects.get(id=1)
 	imagem = request.FILES.get('imagem', False)
@@ -252,7 +253,7 @@ def sobre_editar(request):
 		return redirect('sobre')
 	else: 	
 		return render(request, 'sobre_editar.html', {'sobre': sobre })
-
+@login_required
 def email_enviar(request):
 	request.POST['nome']
 	request.POST['email']
