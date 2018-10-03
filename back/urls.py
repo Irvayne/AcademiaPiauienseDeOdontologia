@@ -31,4 +31,5 @@ urlpatterns = [
     path('admin/cadeiras/<int:cadeira_id>/editar', views.cadeiras_editar, name='cadeiras_editar'),
     path('admin/sobre', views.sobre, name='sobre'),
     path('admin/sobre/editar', views.sobre_editar, name='sobre_editar'),
+    path('admin/email/enviar', views.email_enviar, name='email_enviar'),
    ]

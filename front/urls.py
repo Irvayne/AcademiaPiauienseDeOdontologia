@@ -10,3 +10,4 @@ urlpatterns = [
     path('noticia/lista/', views.lista_noticias, name='front_noticias'),
     path('curso/lista/', views.lista_cursos, name='front_cursos'),
 ]
+

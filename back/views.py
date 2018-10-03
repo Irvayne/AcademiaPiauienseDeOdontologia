@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from core.models import Estatuto, Noticia, Diretoria, Membro, Curso, Cadeira, Sobre, Home
 from django.core.files.storage import FileSystemStorage
+from django.core.mail import EmailMessage
 
 
 def home(request):
@@ -52,8 +53,8 @@ def noticias(request):
 
 def noticias_cadastrar(request):
 	if request.method == 'POST':
-		if request.FILES['imagem']:
-			imagem = request.FILES['imagem']
+		imagem = request.FILES.get('imagem', False)
+		if imagem:
 			fs = FileSystemStorage()
 			filename = fs.save(imagem.name, imagem)
 			uploaded_file_url = fs.url(filename)
@@ -72,14 +73,12 @@ def noticias_editar(request, noticia_id):
 		noticia.titulo = request.POST['titulo']
 		noticia.subtitulo = request.POST['subtitulo']
 		noticia.conteudo = request.POST['conteudo']
-		if request.FILES['imagem']:
-			imagem = request.FILES['imagem']
+		imagem = request.FILES.get('imagem', False)
+		if imagem:
 			fs = FileSystemStorage()
 			filename = fs.save(imagem.name, imagem)
 			uploaded_file_url = fs.url(filename)
 			noticia.imagem=uploaded_file_url
-		else:
-			noticia.imagem=None
 		noticia.save()
 		return redirect('noticias')
 	else:
@@ -241,8 +240,8 @@ def sobre(request):
 
 def sobre_editar(request):
 	sobre = Sobre.objects.get(id=1)
-	if request.method == 'POST' and request.FILES['imagem']:
-		imagem = request.FILES['imagem']
+	imagem = request.FILES.get('imagem', False)
+	if request.method == 'POST' and imagem:
 		fs = FileSystemStorage()
 		filename = fs.save(imagem.name, imagem)
 		uploaded_file_url = fs.url(filename)
@@ -253,3 +252,16 @@ def sobre_editar(request):
 		return redirect('sobre')
 	else: 	
 		return render(request, 'sobre_editar.html', {'sobre': sobre })
+
+def email_enviar(request):
+	request.POST['nome']
+	request.POST['email']
+	email = EmailMessage(request.POST['assunto'], request.POST['mensagem'], to=['irvaynematheus@hotmail.com'])
+	email.send()
+	return redirect('index')
+
+
+
+
+
+
