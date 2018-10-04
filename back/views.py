@@ -251,6 +251,11 @@ def sobre_editar(request):
 		sobre.imagem = uploaded_file_url
 		sobre.save()
 		return redirect('sobre')
+	elif request.method == 'POST' and sobre.imagem:
+		sobre.titulo = request.POST['titulo']
+		sobre.conteudo = request.POST['conteudo']
+		sobre.save()
+		return redirect('sobre')
 	else: 	
 		return render(request, 'sobre_editar.html', {'sobre': sobre })
 @login_required
