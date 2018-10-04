@@ -50,3 +50,8 @@ def lista_noticias(request):
 def lista_cursos(request):
 	cursos = Curso.objects.all()
 	return render(request, 'front_cursos.html', {'cursos': cursos})
+
+
+def detalha_noticia(request, id_noticia):
+	noticia = Noticia.objects.get(id=id_noticia)
+	return render(request, 'front_detalha_noticia.html', {'noticia': noticia})

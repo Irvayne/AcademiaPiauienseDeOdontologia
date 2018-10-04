@@ -3,26 +3,46 @@
 <html lang="pt-br">
 <head>
   <meta charset="utf-8">
+  <title>Academia Piauiense de Odontologia</title>
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta content="" name="keywords">
   <meta content="" name="description">
 
-  <title>Academia Piauiense de Odontologia</title>
-
+  <!-- Favicons -->
   <link href="{% static "img/favicon.png" %}" rel="icon">
   <link href="{% static "img/apple-touch-icon.png" %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900" rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
   <link href="{% static "lib/bootstrap/css/bootstrap.min.css" %}" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
   <link href="{% static "lib/nivo-slider/css/nivo-slider.css" %}" rel="stylesheet">
   <link href="{% static "lib/owlcarousel/owl.carousel.css" %}" rel="stylesheet">
   <link href="{% static "lib/owlcarousel/owl.transitions.css" %}" rel="stylesheet">
   <link href="{% static "lib/font-awesome/css/font-awesome.min.css" %}" rel="stylesheet">
   <link href="{% static "lib/animate/animate.min.css" %}" rel="stylesheet">
   <link href="{% static "lib/venobox/venobox.css" %}" rel="stylesheet">
+
+  <!-- Nivo Slider Theme -->
   <link href="{% static "css/nivo-slider-theme.css" %}" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
   <link href="{% static "css/style.css" %}" rel="stylesheet">
+
+  <!-- Responsive Stylesheet File -->
   <link href="{% static "css/responsive.css" %}" rel="stylesheet">
+
   <link href="{% static "css/noticia.css" %}" rel="stylesheet">
+
+  <!-- =======================================================
+    Theme Name: eBusiness
+    Theme URL: https://bootstrapmade.com/ebusiness-bootstrap-corporate-template/
+    Author: BootstrapMade.com
+    License: https://bootstrapmade.com/license/
+  ======================================================= -->
 </head>
 
 <body data-spy="scroll" data-target="#navbar-example">
@@ -52,13 +72,13 @@
               <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1" id="navbar-example">
                 <ul class="nav navbar-nav navbar-right">
                   <li class="active">
-                    <a class="page-scroll" href="#{% url 'index' %}#home">Home</a>
+                    <a class="page-scroll" href="{% url 'index' %}#home">Home</a>
                   </li>
                   <li>
-                    <a class="page-scroll" href="#% url 'index' %}#sobre">Sobre</a>
+                    <a class="page-scroll" href="{% url 'index' %}#sobre">Sobre</a>
                   </li>
                   <li>
-                    <a class="page-scroll" href="#{% url 'index' %}#cursos">Cursos</a>
+                    <a class="page-scroll" href="{% url 'index' %}#cursos">Cursos</a>
                   </li>
                   <li>
                     <a class="page-scroll" href="#noticias">Notícias</a>
@@ -88,28 +108,14 @@
   </header>
   <!-- header end -->
 
-  <div id="noticias" class="blog-area noticia">
-    <div class="blog-inner area-padding">
-      <div class="blog-overly"></div>
-      <div class="container ">
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="section-headline text-center">
-              <h2>Últimas Notícias</h2>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <!-- Start Right Blog-->
-          {% for noticia in noticias %}
-          <div class="col-md-4 col-sm-4 col-xs-12 notice">
-            <div class="single-blog">
-              <div class="single-blog-img">
-                <a href="blog.html">
-                  <img src="{{noticia.imagem}}" alt="">
-                </a>
-              </div>
-              <div class="blog-meta">
+  <!-- Start About area -->
+  <div id="noticias" class="about-area area-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="section-headline text-center">
+            <h2 class="titulo-noticia">{{noticia.titulo}}</h2>
+            <div class="blog-meta">
                 <span class="date-type">
                   <i class="fa fa-calendar"></i> <b>Criado: </b>{{noticia.criado}}
                 </span>
@@ -118,26 +124,23 @@
                   <i class="fa fa-calendar"></i> <b>Alterado: </b>{{noticia.modificado}}
                 </span>
               </div>
-              <div class="blog-text">
-                <h4>
-                  <a>{{noticia.titulo}}</a>
-                </h4>
-                <div id="div_conteudo_noticia{{noticia.id}}">
-                </div>
-
-                <input type="hidden" id="conteudo_noticia{{noticia.id}}" name="variable" value="{{ noticia.conteudo }}">
-                <input type="hidden" class="id_noticia" value="{{noticia.id}}">
-              </div>
-              <span>
-                <a href="{% url 'front_detalha_noticia' noticia.id %}" class="ready-btn">Ler Mais</a>
-              </span>
-            </div>
           </div>
-          {% endfor %}
         </div>
+        <div class="col-md-6 col-sm-6 col-xs-6 imagem-noticia">
+          <img src="{{noticia.imagem}}">
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6 imagem-noticia">
+              <div id="div_conteudo_noticia"></div>
+              <input type="hidden" id="conteudo_noticia" name="variable" value="{{ noticia.conteudo }}">
+              <script type="text/javascript"> 
+                var conteudoNoticia = document.getElementById("conteudo_noticia").value;
+                document.getElementById("div_conteudo_noticia").innerHTML = conteudoNoticia;
+              </script>
+            </div>
       </div>
     </div>
   </div>
+  <!-- End About area -->
 
   <!-- Start Footer bottom Area -->
   <footer>
@@ -186,16 +189,6 @@
   <script src="{% static "contactform/contactform.js" %}"></script>
 
   <script src="{% static "js/main.js" %}"></script>
-
-  <script type="text/javascript"> 
-    var idsNoticias = document.getElementsByClassName("id_noticia");
-    for(var id = 0; id < idsNoticias.length; id++) {
-      string_conteudo_noticia = 'conteudo_noticia' + idsNoticias[id].value;
-      string_div_conteudo_noticia = 'div_conteudo_noticia' + idsNoticias[id].value;
-      var conteudoNoticias = document.getElementById(string_conteudo_noticia).value;
-      document.getElementById(string_div_conteudo_noticia).innerHTML = conteudoNoticias;
-    } 
-  </script>
 </body>
 
 </html>
