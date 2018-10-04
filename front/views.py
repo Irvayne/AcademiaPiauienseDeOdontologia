@@ -49,9 +49,15 @@ def lista_noticias(request):
 
 def lista_cursos(request):
 	cursos = Curso.objects.all()
+	cursos.reverse()
 	return render(request, 'front_cursos.html', {'cursos': cursos})
 
 
 def detalha_noticia(request, id_noticia):
 	noticia = Noticia.objects.get(id=id_noticia)
 	return render(request, 'front_detalha_noticia.html', {'noticia': noticia})
+
+
+def detalha_curso(request, id_curso):
+	curso = Curso.objects.get(id=id_curso)
+	return render(request, 'front_detalha_curso.html', {'curso': curso})

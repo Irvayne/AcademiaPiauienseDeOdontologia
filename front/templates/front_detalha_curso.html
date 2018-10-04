@@ -78,10 +78,10 @@
                     <a class="page-scroll" href="{% url 'index' %}#sobre">Sobre</a>
                   </li>
                   <li>
-                    <a class="page-scroll" href="#cursos">Cursos</a>
+                    <a class="page-scroll" href="{% url 'index' %}#cursos">Cursos</a>
                   </li>
                   <li>
-                    <a class="page-scroll" href="{% url 'index' %}#noticias">Notícias</a>
+                    <a class="page-scroll" href="#noticias">Notícias</a>
                   </li>
                   <li>
                     <a class="page-scroll" href="{% url 'index' %}#contatos">Contatos</a>
@@ -108,48 +108,34 @@
   </header>
   <!-- header end -->
 
-  <div id="cursos" class="blog-area">
-    <div class="blog-inner area-padding">
-      <div class="blog-overly"></div>
-      <div class="container ">
-        <div class="row">
-          <div class="col-md-12 col-sm-12 col-xs-12">
-            <div class="section-headline text-center">
-              <h2>Nossos Cursos</h2>
-            </div>
+  <!-- Start About area -->
+  <div id="noticias" class="about-area area-padding">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="section-headline text-center">
+            <h2 class="titulo-noticia">{{curso.nome}}</h2>
+            <div class="blog-meta">
+                <span class="date-type">
+                  <i class="fa fa-calendar"></i> <b>Criado: </b>{{curso.criado}}
+                </span>
+                <br>
+                <span class="date-type">
+                  <i class="fa fa-calendar"></i> <b>Alterado: </b>{{curso.modificado}}
+                </span>
+              </div>
           </div>
         </div>
-        <div class="row">
-          <!-- Start Right Blog-->
-          {% for curso in cursos %}
-          <div class="col-md-4 col-sm-4 col-xs-12">
-            <div class="single-blog">
-              <div class="blog-meta">
-                <span class="date-type">
-                  <i class="fa fa-calendar"></i> <b>Criado:</b> {{curso.criado}}
-                </span>
-                <span class="date-type">
-                  <i class="fa fa-calendar"></i> <b>Alterado:</b> {{curso.modificado}}
-                </span>
-              </div>
-              <div class="blog-text">
-                <h4>
-                  <a href="blog.html">{{curso.nome}}</a>
-                </h4>
-                <p>
-                  {{curso.conteudo}}
-                </p>
-              </div>
-              <span>
-                <a href="{% url 'front_detalha_curso' curso.id %}" class="ready-btn">Ler Mais</a>
-              </span>
-            </div>
-          </div>
-          {% endfor %}
+        <div class="col-md-2 col-sm-2 col-xs-2 imagem-noticia">
+          <img src="{{noticia.imagem}}">
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-6 imagem-noticia">
+          {{curso.conteudo}}      
         </div>
       </div>
     </div>
   </div>
+  <!-- End About area -->
 
   <!-- Start Footer bottom Area -->
   <footer>
