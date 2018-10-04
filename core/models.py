@@ -48,3 +48,12 @@ class Home(models.Model):
 	email = models.CharField(max_length=50)
 	localizadao = models.CharField(max_length=100)
 	imagem = models.ImageField(upload_to='imagens/', blank=True, null=True)
+
+
+class CadeiraFundadoresTitulares(models.Model):
+	nome_fundador_titular = models.CharField(max_length=150)
+	nome_membro_atual = models.CharField(max_length=150)
+	descricao_fundador_titular = models.CharField(max_length=250)
+	descricao_membro_atual = models.CharField(max_length=250)
+	imagem_membro_atual = models.ImageField(upload_to='imagens/', blank=True, null=True)
+	in_memorian = models.BooleanField(default=False)
