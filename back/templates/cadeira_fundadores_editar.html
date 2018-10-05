@@ -1,0 +1,38 @@
+{% extends 'decorator.html' %}
+{% block body %}
+
+
+<form accept="{% url 'cadeira_fundadores_editar' cadeira_fundadores.id %}" method="POST">
+	{% csrf_token %}
+	<div class="form-group">
+		<label for="id_nome_fundador_titular">Nome do Fundador Titular</label>
+		<input type="text" name="nome_fundador_titular" value="{{ cadeira_fundadores.nome_fundador_titular}}" class="form-control" id="id_nome_fundador_titular" placeholder="Nome do Fundador Titular">
+	</div>
+	<div class="form-group">
+		<label for="id_descricao_fundador_titular">Descrição do Fundador Titular</label>
+		<input type="text" name="descricao_fundador_titular" value="{{ cadeira_fundadores.descricao_fundador_titular}}" class="form-control" id="id_descricao_fundador_titular" placeholder="Descrição do Fundador Titular">
+	</div>
+	<div class="form-group">
+		<label for="id_nome_membro_atual">Nome do Membro Atual</label>
+		<input type="text" name="nome_membro_atual" class="form-control" value="{{ cadeira_fundadores.nome_membro_atual}}" id="id_nome_membro_atual" placeholder="Nome do Membro Atual">
+	</div>
+	<div class="form-group">
+		<label for="id_descricao_membro_atual">Descrição do Membro Atual</label>
+		<input type="text" name="descricao_membro_atual" class="form-control" value="{{ cadeira_fundadores.descricao_membro_atual}}" id="id_descricao_membro_atual" placeholder="Descrição do Membro Atual">
+	</div>
+	<div class="form-group">
+		<label for="id_imagem">Imagem do Membro Atual</label>
+		<input type="file" name="imagem" class="form-control" id="id_imagem" value="{{ cadeira_fundadores.imagem_membro_atual}}" placeholder="Imagem">
+	</div>
+	<div class="form-check">
+		{% if cadeira_fundadores.in_memorian %}
+    		<input type="checkbox" class="form-check-input" id="id_in_memorian" checked name="in_memorian">
+    	{% else %}
+    		<input type="checkbox" class="form-check-input" id="id_in_memorian" name="in_memorian">
+    	{% endif %}
+    <label class="form-check-label" for="id_in_memorian">In Memorian</label>
+  </div>
+	<button class="btn btn-primary">Salvar</button>
+</form>
+
+{% endblock %}

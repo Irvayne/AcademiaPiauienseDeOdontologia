@@ -1,0 +1,71 @@
+{% extends "decorator.html" %}
+{% block body %}
+
+<div class="panel-body">
+	<a type="button" href="{% url 'cadeira_fundadores_cadastrar' %}" class="btn btn-primary pull-right">Cadastrar</a>
+
+</div>
+
+<div class="panel panel-default">
+	<div class="panel-heading">
+		<h3 class="panel-title">Cadeira Fundadores Cadastradas</h3>
+	</div>
+	<div class="panel-body">
+		<table class="table"> <thead>
+			<tr>
+				<th scope="col">Nome do Fundador Titular</th>
+				<th scope="col">Nome do Membro Atual</th>
+				<th scope="col">Descrição do Fundador Titular</th>
+				<th scope="col">Descrição do Membro Atual</th>
+				<th scope="col">Imagem</th>
+				<th scope="col">In Memorian</th>
+				<th scope="col">Opcoes</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for cadeira_fundador in cadeira_fundadores %}
+			<tr>
+				<td>{{ cadeira_fundador.nome_fundador_titular }}</td>
+				<td>{{ cadeira_fundador.nome_membro_atual }}</td>
+				<td>{{ cadeira_fundador.descricao_fundador_titular }}</td>
+				<td>{{ cadeira_fundador.descricao_membro_atual }}</td>
+				<td>{{ cadeira_fundador.imagem_membro_atual }}</td>
+				<td>{{ cadeira_fundador.in_memorian }}</td>
+				<td>
+					<a class="btn btn-warning" href="{% url 'cadeira_fundadores_editar' cadeira_fundador.id %}">
+						<span class="glyphicon glyphicon-pencil"></span> Editar
+					</a>
+					<a class="btn btn-danger" data-toggle="modal" data-target="#{{cadeira_fundador.id}}">
+						<span class="glyphicon glyphicon-remove"></span> Excluir
+					</a>
+
+					<div class="modal fade" id="{{cadeira_fundador.id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+					  <div class="modal-dialog" role="document">
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <h5 class="modal-title" >Alerta de Confirmação</h5>
+					        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					          <span aria-hidden="true">&times;</span>
+					        </button>
+					      </div>
+					      <div class="modal-body">
+					        Tem certeza que deseja excluir?
+					      </div>
+					      <div class="modal-footer">
+					      	<a type="button" href="{% url 'cadeira_fundadores_remover' cadeira_fundador.id %}" class="btn btn-success">Sim</a>
+					        <button type="button" class="btn btn-danger" data-dismiss="modal">Não</button>
+					      </div>
+					    </div>
+					  </div>
+					</div>
+				</td>
+
+			</tr>
+
+			{% endfor %}
+
+		</tbody></table>
+	</div>
+</div>
+
+{% endblock %}

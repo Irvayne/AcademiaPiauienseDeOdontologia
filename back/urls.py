@@ -32,4 +32,9 @@ urlpatterns = [
     path('admin/sobre', views.sobre, name='sobre'),
     path('admin/sobre/editar', views.sobre_editar, name='sobre_editar'),
     path('admin/email/enviar', views.email_enviar, name='email_enviar'),
+    path('admin/cadeira/fundadores', views.cadeira_fundadores, name='cadeira_fundadores'),
+    path('admin/cadeira/fundadores/cadastrar', views.cadeira_fundadores_cadastrar, name='cadeira_fundadores_cadastrar'),
+    path('admin/cadeira/fundadores/<int:cadeira_fundadores_id>/remover', views.cadeira_fundadores_remover, name='cadeira_fundadores_remover'),
+    path('admin/cadeira/fundadores/<int:cadeira_fundadores_id>/editar', views.cadeira_fundadores_editar, name='cadeira_fundadores_editar'),
+
    ]

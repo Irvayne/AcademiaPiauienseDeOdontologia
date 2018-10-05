@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from core.models import Estatuto, Noticia, Diretoria, Membro, Curso, Cadeira, Sobre, Home
+from core.models import Estatuto, Noticia, Diretoria, Membro, Curso, Cadeira, Sobre, Home, CadeiraFundadoresTitulares
 from django.core.files.storage import FileSystemStorage
 from django.core.mail import EmailMessage
 from django.contrib.auth.decorators import login_required
@@ -267,7 +267,65 @@ def email_enviar(request):
 	return redirect('index')
 
 
+@login_required
+def cadeira_fundadores(request):
+	try:
+		cadeira_fundadores = CadeiraFundadoresTitulares.objects.all()
+	except:
+		cadeiras_fundadores = []
+	return render(request, 'cadeira_fundadores.html', {'cadeira_fundadores': cadeira_fundadores})
 
+@login_required
+def cadeira_fundadores_cadastrar(request):
+	if request.method == 'POST':
+		imagem = request.FILES.get('imagem', False)
+		in_memorian = request.POST.get('in_memorian', '') == 'on'
+		if imagem:
+			fs = FileSystemStorage()
+			filename = fs.save(imagem.name, imagem)
+			uploaded_file_url = fs.url(filename)
+			cadeira_fundadores = CadeiraFundadoresTitulares(nome_fundador_titular=request.POST['nome_fundador_titular'],
+															 nome_membro_atual=request.POST['nome_membro_atual'],
+															 descricao_fundador_titular=request.POST['descricao_fundador_titular'],
+															 descricao_membro_atual=request.POST['descricao_membro_atual'],
+															 imagem_membro_atual=uploaded_file_url,
+															 in_memorian=in_memorian)
+		else:
+			cadeira_fundadores = CadeiraFundadoresTitulares(nome_fundador_titular=request.POST['nome_fundador_titular'],
+															 nome_membro_atual=request.POST['nome_membro_atual'],
+															 descricao_fundador_titular=request.POST['descricao_fundador_titular'],
+															 descricao_membro_atual=request.POST['descricao_membro_atual'],
+															 in_memorian=in_memorian)
+		cadeira_fundadores.save()
+		return redirect('cadeira_fundadores')
+	else:
+		return render(request, 'cadeira_fundadores_cadastrar.html')
+
+@login_required
+def cadeira_fundadores_editar(request, cadeira_fundadores_id):
+	cadeira_fundadores = CadeiraFundadoresTitulares.objects.get(id=cadeira_fundadores_id)
+	if request.method == 'POST':
+		cadeira_fundadores.nome_fundador_titular = request.POST['nome_fundador_titular']
+		cadeira_fundadores.nome_membro_atual = request.POST['nome_membro_atual']
+		cadeira_fundadores.descricao_fundador_titular = request.POST['descricao_fundador_titular']
+		cadeira_fundadores.descricao_membro_atual = request.POST['descricao_membro_atual']
+		cadeira_fundadores.in_memorian = request.POST.get('in_memorian', '') == 'on'
+		imagem = request.FILES.get('imagem', False)
+		if imagem:
+			fs = FileSystemStorage()
+			filename = fs.save(imagem.name, imagem)
+			uploaded_file_url = fs.url(filename)
+			cadeira_fundadores.imagem_membro_atual=uploaded_file_url
+		cadeira_fundadores.save()
+		return redirect('cadeira_fundadores')
+	else:
+		return render(request, 'cadeira_fundadores_editar.html', {'cadeira_fundadores': cadeira_fundadores})
+
+@login_required
+def cadeira_fundadores_remover(request, cadeira_fundadores_id):
+	cadeira_fundadores = CadeiraFundadoresTitulares.objects.get(id=cadeira_fundadores_id)
+	cadeira_fundadores.delete()
+	return redirect('cadeira_fundadores')
 
 
 
