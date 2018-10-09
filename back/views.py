@@ -275,6 +275,7 @@ def cadeira_fundadores(request):
 		cadeiras_fundadores = []
 	return render(request, 'cadeira_fundadores.html', {'cadeira_fundadores': cadeira_fundadores})
 
+
 @login_required
 def cadeira_fundadores_cadastrar(request):
 	if request.method == 'POST':
@@ -301,6 +302,7 @@ def cadeira_fundadores_cadastrar(request):
 	else:
 		return render(request, 'cadeira_fundadores_cadastrar.html')
 
+
 @login_required
 def cadeira_fundadores_editar(request, cadeira_fundadores_id):
 	cadeira_fundadores = CadeiraFundadoresTitulares.objects.get(id=cadeira_fundadores_id)
@@ -321,11 +323,9 @@ def cadeira_fundadores_editar(request, cadeira_fundadores_id):
 	else:
 		return render(request, 'cadeira_fundadores_editar.html', {'cadeira_fundadores': cadeira_fundadores})
 
+
 @login_required
 def cadeira_fundadores_remover(request, cadeira_fundadores_id):
 	cadeira_fundadores = CadeiraFundadoresTitulares.objects.get(id=cadeira_fundadores_id)
 	cadeira_fundadores.delete()
 	return redirect('cadeira_fundadores')
-
-
-

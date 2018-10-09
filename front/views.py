@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from core.models import Estatuto, Sobre, Noticia, Curso, Diretoria, Home
+from core.models import Estatuto, Sobre, Noticia, Curso, Diretoria, Home, CadeiraFundadoresTitulares
 
 
 def index(request):
@@ -61,3 +61,8 @@ def detalha_noticia(request, id_noticia):
 def detalha_curso(request, id_curso):
 	curso = Curso.objects.get(id=id_curso)
 	return render(request, 'front_detalha_curso.html', {'curso': curso})
+
+
+def lista_cadeiras_fundadores(request):
+	cadeiras_fundadores = CadeiraFundadoresTitulares.objects.all()
+	return render(request, 'front_lista_cadeiras_fundadores.html', {'cadeiras': cadeiras_fundadores})
