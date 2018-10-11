@@ -2,7 +2,7 @@
 {% block body %}
 
 
-<form accept="{% url 'cadeira_fundadores_cadastrar' %}" method="POST">
+<form accept="{% url 'cadeira_fundadores_cadastrar' %}" method="POST" enctype="multipart/form-data">
 	{% csrf_token %}
 	<div class="form-group">
 		<label for="id_nome_fundador_titular">Nome do Fundador Titular</label>

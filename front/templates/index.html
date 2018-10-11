@@ -211,7 +211,9 @@
             <div class="single-blog">
               <div class="single-blog-img">
                 <a href="blog.html">
-									<img src="{{noticia.imagem}}" alt="">
+                  {% if noticia.imagem %}
+									 <img src="{{noticia.imagem}}" alt="">
+                  {% endif %}
 								</a>
               </div>
               <div class="blog-meta">
