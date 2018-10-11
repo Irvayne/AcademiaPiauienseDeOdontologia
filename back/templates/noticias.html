@@ -25,7 +25,7 @@
 				<td>{{ noticia.titulo }}</td>
 				<td>{{ noticia.subtitulo }}</td>
 				<td>{{ noticia.modificado }}</td>
-				<td>{{ noticia.imagem }}</td>
+				<td><img src="{{ noticia.imagem }}" class="img-thumbnail" style="width: 100px; height: 100px;"></td>
 				<td>
 					<a class="btn btn-warning" href="{% url 'noticias_editar' noticia.id %}">
 						<span class="glyphicon glyphicon-pencil"></span> Editar
