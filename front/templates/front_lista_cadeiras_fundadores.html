@@ -52,16 +52,16 @@
               <div class="collapse navbar-collapse main-menu bs-example-navbar-collapse-1" id="navbar-example">
                 <ul class="nav navbar-nav navbar-right">
                   <li class="active">
-                    <a class="page-scroll" href="#{% url 'index' %}#home">Home</a>
+                    <a class="page-scroll" href="{% url 'index' %}#home">Home</a>
                   </li>
                   <li>
-                    <a class="page-scroll" href="#% url 'index' %}#sobre">Sobre</a>
+                    <a class="page-scroll" href="{% url 'index' %}#sobre">Sobre</a>
                   </li>
                   <li>
-                    <a class="page-scroll" href="#{% url 'index' %}#cursos">Cursos</a>
+                    <a class="page-scroll" href="{% url 'index' %}#cursos">Cursos</a>
                   </li>
                   <li>
-                    <a class="page-scroll" href="#noticias">Notícias</a>
+                    <a class="page-scroll" href="{% url 'index' %}#noticias">Notícias</a>
                   </li>
                   <li>
                     <a class="page-scroll" href="{% url 'index' %}#contatos">Contatos</a>
@@ -88,7 +88,7 @@
   </header>
   <!-- header end -->
 
-  <div id="noticias">
+  <div id="cadeiras">
     <div class="blog-inner area-padding">
       <div class="blog-overly"></div>
       <div class="container ">
@@ -99,9 +99,9 @@
             </div>
             {% for cadeira in cadeiras %}
               {% if cadeira.in_memorian %}
-                <h5 class="media-heading"><b>Cadeira <em>(In Memorian)</em></b></h5>
+                <h5 class="media-heading"><b class="cadeira-fundandor"></b> <b><em>(In Memorian)</em></b></h5>
               {% else %}
-                <h5 class="media-heading"><b>Cadeira</b></h5>
+                <h5 class="media-heading"><b class="cadeira-fundandor"></b></h5>
               {% endif %}
             <div class="bs-example" data-example-id="media-list">
               <ul class="media-list">
@@ -185,23 +185,14 @@
   <script src="{% static "lib/nivo-slider/js/jquery.nivo.slider.js" %}" type="text/javascript"></script>
   <script src="{% static "lib/appear/jquery.appear.js" %}"></script>
   <script src="{% static "lib/isotope/isotope.pkgd.min.js" %}"></script>
-  <!-- Uncomment below if you want to use dynamic Google Maps -->
-  <!-- <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD8HeI8o-c1NppZA-92oYlXakhDPYR7XMY"></script> -->
-
-  <!-- Contact Form JavaScript File -->
   <script src="{% static "contactform/contactform.js" %}"></script>
-
   <script src="{% static "js/main.js" %}"></script>
 
-  <script type="text/javascript"> 
-    var idsNoticias = document.getElementsByClassName("id_noticia");
-    for(var id = 0; id < idsNoticias.length; id++) {
-      string_conteudo_noticia = 'conteudo_noticia' + idsNoticias[id].value;
-      string_div_conteudo_noticia = 'div_conteudo_noticia' + idsNoticias[id].value;
-      var conteudoNoticias = document.getElementById(string_conteudo_noticia).value;
-      document.getElementById(string_div_conteudo_noticia).innerHTML = conteudoNoticias;
-    } 
+  <script type="text/javascript">
+    var cadeiras_fundadores = document.getElementsByClassName("cadeira-fundandor");
+    for(var i = 0; i < cadeiras_fundadores.length; i++) {
+      cadeiras_fundadores[i].innerHTML = "Cadeira " + (i + 1);
+    }
   </script>
 </body>
-
 </html>
